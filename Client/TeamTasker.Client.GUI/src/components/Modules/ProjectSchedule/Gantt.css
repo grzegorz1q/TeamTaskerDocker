@@ -1,0 +1,61 @@
+/* div:only-child:not(:first-child), .gantt-container {
+  height: 100%;
+} */
+
+.gantt_grid_head_add {
+  display: none;
+}
+
+.gantt_add {
+  display: none;
+}
+
+.gantt_file {
+  display: none;
+} 
+
+.gantt_task_row.gantt_selected {
+  display: none;
+}
+
+.gantt_link_point {
+  display: none;
+}
+
+.gantt_link_control.task_left.task_start_date {
+  display: none;
+}
+
+.gantt_link_control.task_right.task_end_date {
+  display: none;
+}
+
+.gantt_task_progress_drag {
+  display: none;
+  cursor: default;
+  opacity: 0;
+}
+
+.gantt_task_drag.task_left.task_start_date{
+  display: none;
+}
+
+.gantt_task_drag.task_right.task_end_date{
+  display: none;
+}
+
+.gantt_task_content{
+  cursor: default;
+}
+
+.gantt_bars_area{
+  cursor: default;
+}
+
+.gantt_row.gantt_selected.gantt_row_task{
+  background-color: white;
+}
+
+.gantt_row.odd.gantt_selected.gantt_row_task{
+  background-color: white;
+}
