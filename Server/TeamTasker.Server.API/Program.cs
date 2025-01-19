@@ -120,13 +120,21 @@ builder.Services.AddAuthorization(options =>
 if (builder.Environment.IsProduction())
 {
     //TODO: SQL Server implementation
+    /*Console.WriteLine($">[DBInit] {builder.Environment.EnvironmentName} Mode - initializing SQLite Database...");
+
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        //options.UseInMemoryDatabase("In Memory database")
+        options.UseSqlite("Data Source=TeamTasker.db")
+    );*/
 }
 else
 {
-    Console.WriteLine($">[DBInit] {builder.Environment.EnvironmentName} Mode - initializing In Memory Database...");
+    //Console.WriteLine($">[DBInit] {builder.Environment.EnvironmentName} Mode - initializing In Memory Database...");
+    Console.WriteLine($">[DBInit] {builder.Environment.EnvironmentName} Mode - initializing SQLite Database...");
 
     builder.Services.AddDbContext<AppDbContext>(options =>
-        options.UseInMemoryDatabase("In Memory database")
+        //options.UseInMemoryDatabase("In Memory database")
+        options.UseSqlite("Data Source=TeamTasker.db")
     );
 }
 
