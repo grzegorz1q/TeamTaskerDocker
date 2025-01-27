@@ -117,15 +117,15 @@ builder.Services.AddAuthorization(options =>
 
 //TODO: Change database implementation to the SQL Server, instead of In Memory Database
 
-if (builder.Environment.IsProduction())
+/*if (builder.Environment.IsProduction()) // Comment for test
 {
     //TODO: SQL Server implementation
-    /*Console.WriteLine($">[DBInit] {builder.Environment.EnvironmentName} Mode - initializing SQLite Database...");
+    *//*Console.WriteLine($">[DBInit] {builder.Environment.EnvironmentName} Mode - initializing SQLite Database...");
 
     builder.Services.AddDbContext<AppDbContext>(options =>
         //options.UseInMemoryDatabase("In Memory database")
         options.UseSqlite("Data Source=TeamTasker.db")
-    );*/
+    );*//*
 }
 else
 {
@@ -136,7 +136,29 @@ else
         //options.UseInMemoryDatabase("In Memory database")
         options.UseSqlite("Data Source=TeamTasker.db")
     );
+}*/
+
+if (builder.Environment.IsProduction())
+{
+    // Wczytanie zmiennej œrodowiskowej w produkcji
+    string connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+
+    if (string.IsNullOrEmpty(connectionString))
+    {
+        throw new InvalidOperationException("Connection string is not set.");
+    }
+
 }
+else
+{
+    Console.WriteLine($">[DBInit] {builder.Environment.EnvironmentName} Mode - initializing SQLite Database...");
+
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseSqlite("Data Source=./data/TeamTasker.db")
+    );
+}
+
+
 
 //Adds repositories to the Dependency Injection Container
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();

@@ -137,7 +137,7 @@ namespace TeamTasker.Server.Infrastructure.Presistence
             {
                 //new Team(){ Name = "team1", LeaderId=2, Employees = selectedUsers},
                 //new Team(){ Name = "team2", LeaderId=2, Employees = selectedUsers}
-                new Team(){ Name = "Team 1", LeaderId = 3}
+                new Team(){ Name = "Team 1", LeaderId = 2}
             };
             return teams;
         }
