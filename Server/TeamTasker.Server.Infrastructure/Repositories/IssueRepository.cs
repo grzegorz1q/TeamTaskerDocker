@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,7 +39,7 @@ namespace TeamTasker.Server.Infrastructure.Repositories
 
         public IEnumerable<Issue> GetAllIssues()
         {
-            var allDbIssues = _appDbContext.Issues.ToList();
+            var allDbIssues = _appDbContext.Issues.Include(i=>i.Employee).ToList();
 
             return allDbIssues;
         }

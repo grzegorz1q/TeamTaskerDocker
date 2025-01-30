@@ -90,7 +90,10 @@ namespace TeamTasker.Server.Application.Services
         public string GetUserPassword(int id)
         {
             var user = _employeeRepository.GetUser(id);
-
+            if (user.IsArchived)
+            {
+                throw new Exception("User not found!");
+            }
             var userDto = _mapper.Map<ReadUserDto>(user);
             return userDto.Password;
         }
@@ -146,6 +149,8 @@ namespace TeamTasker.Server.Application.Services
 
             if (employee == null)
                 throw new Exception("Employee not found.");
+
+
 
             _employeeRepository.DeleteEmployee(id);
         }

@@ -156,32 +156,6 @@ else
     builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseSqlite("Data Source=./data/TeamTasker.db")
     );
-
-    // Konfiguracja Kestrel
-    builder.WebHost.ConfigureKestrel((context, options) =>
-    {
-        // Pobierz konfiguracjê z sekcji "Kestrel" w appsettings.json
-        var kestrelSection = context.Configuration.GetSection("Kestrel");
-        var httpsEndpoint = kestrelSection.GetSection("Endpoints:Https");
-
-        if (httpsEndpoint.Exists())
-        {
-            var certificatePath = httpsEndpoint["Certificate:Path"];
-            var certificatePassword = httpsEndpoint["Certificate:Password"];
-
-            if (!string.IsNullOrEmpty(certificatePath) && !string.IsNullOrEmpty(certificatePassword))
-            {
-                // Skonfiguruj Kestrel do u¿ywania certyfikatu
-                options.ConfigureHttpsDefaults(httpsOptions =>
-                {
-                    httpsOptions.ServerCertificate = new System.Security.Cryptography.X509Certificates.X509Certificate2(
-                        certificatePath,
-                        certificatePassword
-                    );
-                });
-            }
-        }
-    });
 }
 
 

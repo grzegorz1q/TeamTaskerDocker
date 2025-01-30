@@ -6,5 +6,6 @@ export type ReadEmployeeDto = {
     position: string,
     roleId: number,
     avatar: string,
-    isTeamLeader: boolean
+    isTeamLeader: boolean,
+    isArchived: boolean
 }

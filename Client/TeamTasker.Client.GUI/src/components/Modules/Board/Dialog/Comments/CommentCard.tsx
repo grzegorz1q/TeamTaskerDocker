@@ -27,7 +27,12 @@ export default function CommentCard({cardComment, commentEmployee, currentEmploy
             <></>
             }
             <Typography fontWeight={550} fontFamily={"Arial"} color={"gray"} marginLeft={"auto"} sx={{fontStyle: 'italic'}}>
-                {`${commentEmployee !== undefined ? commentEmployee.firstName : ""} ${commentEmployee !== undefined ? commentEmployee.lastName : ""}`}
+                { commentEmployee?.isArchived 
+                    ? 
+                        `${commentEmployee !== undefined ? commentEmployee.firstName : ""} ${commentEmployee !== undefined ? commentEmployee.lastName : ""}`
+                    :
+                        'Removed User'
+                }
             </Typography>
             <Typography fontFamily={"Arial"} color={"gray"} sx={{fontStyle: 'italic', mr: "1rem"}}>
                 , on {trimmedDate}
