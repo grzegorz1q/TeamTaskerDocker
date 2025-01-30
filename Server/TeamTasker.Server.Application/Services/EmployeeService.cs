@@ -150,6 +150,8 @@ namespace TeamTasker.Server.Application.Services
             if (employee == null)
                 throw new Exception("Employee not found.");
 
+
+
             _employeeRepository.DeleteEmployee(id);
         }
     }

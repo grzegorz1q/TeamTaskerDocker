@@ -141,8 +141,7 @@ namespace TeamTasker.Server.Application.Services
             if (team == null)
                 throw new Exception("Team not found");
               
-            var employees = team.EmployeeTeams.Select(e => e.Employee).ToList();
-
+            var employees = team.EmployeeTeams.Select(e => e.Employee).Where(e => !e.IsArchived).ToList();
             var employeeDtos = _mapper.Map<IEnumerable<ReadEmployeeDto>>(employees);
             return employeeDtos;
         }

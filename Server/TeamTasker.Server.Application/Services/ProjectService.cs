@@ -126,7 +126,7 @@ namespace TeamTasker.Server.Application.Services
             var team = project.Team;
             if (team == null)
                 throw new Exception("This project have not team assigned!");
-            var employees = team.EmployeeTeams.Select(e => e.Employee).ToList();
+            var employees = team.EmployeeTeams.Select(e => e.Employee).Where(e => !e.IsArchived).ToList();
             var employeeDtos = _mapper.Map<IEnumerable<ReadEmployeeDto>>(employees);
             return employeeDtos;
         }

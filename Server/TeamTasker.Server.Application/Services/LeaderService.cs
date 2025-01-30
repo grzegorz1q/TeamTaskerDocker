@@ -37,6 +37,11 @@ namespace TeamTasker.Server.Application.Services
         {
             var employee = _employeeRepository.GetUserByEmail(email);
 
+            if(employee.IsArchived)
+            {
+                throw new Exception("User not exist!");
+            }
+
             if (issueDto == null)
                 throw new ArgumentNullException(nameof(issueDto));
 

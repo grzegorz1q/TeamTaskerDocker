@@ -44,8 +44,8 @@ namespace TeamTasker.Server.Application.Services
 
         public IEnumerable<GetIssueAssignedToEmployeeDto> GetIssueAssignedToEmployee(int employeeId)
         {
-            var issue = _issueRepository.GetAllIssues().Where(issue => issue.EmployeeId == employeeId);
-
+            
+            var issue = _issueRepository.GetAllIssues().Where(issue => issue.EmployeeId == employeeId && !issue.Employee.IsArchived);
             var issueDtos = _mapper.Map<IEnumerable<GetIssueAssignedToEmployeeDto>>(issue);
             return issueDtos;
 
