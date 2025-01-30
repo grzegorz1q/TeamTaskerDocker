@@ -21,7 +21,7 @@ export default function IssueEditEmployee({projectId, issueId, issueEmployee, le
         axios.get<ReadEmployeeDto[]>(`https://localhost:7014/api/Project/GetEmployeesFromProject?projectId=${projectId}`, AxiosOptions)
             .then(response => 
                 {
-                setEmployees(response.data);
+                setEmployees(response.data.filter(user => user.isArchived == false));
                 console.log(response.data);
             })
             .catch(error => {
@@ -34,7 +34,7 @@ export default function IssueEditEmployee({projectId, issueId, issueEmployee, le
             <FormControl>
                 <Select 
                 name="employee"
-                placeholder="Select User" 
+                placeholder="Select User"
                 value={selectUser} 
                 sx={{ boxShadow: 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 }, minWidth: "10rem"}}
                 disabled={!leaderPermission ? true : (sendingState ? true : false)}

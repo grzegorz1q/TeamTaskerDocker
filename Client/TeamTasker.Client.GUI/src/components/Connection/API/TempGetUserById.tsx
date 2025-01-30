@@ -7,7 +7,12 @@ export default async function TempGetUserById(employeeId: number,  setUserAvatar
     try {
         const respone = await axios.get<ReadEmployeeDto>(`https://localhost:7014/api/User/id?id=${employeeId}`, AxiosOptions);
         console.log(respone.data.avatar);
-        setUserAvatar(respone.data.avatar);
+
+        if(respone.data.isArchived == true)
+            setUserAvatar("");
+        else
+            setUserAvatar(respone.data.avatar);
+        
         setTempUserInfo(respone.data.firstName + " " + respone.data.lastName);
     } catch (error) {
         

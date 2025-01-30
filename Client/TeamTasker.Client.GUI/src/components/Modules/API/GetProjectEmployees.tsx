@@ -11,8 +11,8 @@ export async function GetProjectEmployees(projectId: string | undefined, setProj
     try{
         const response = await axios.get<ReadEmployeeDto[]>(`https://localhost:7014/api/Project/GetEmployeesFromProject?projectId=${projectId}`, AxiosOptions);
         //console.log("ReadEmployeeDto[0]: " + response.data[0].email);
-        console.log("Response: " + response.data[0].firstName);
-        setProjectEmployees(response.data);
+        
+        setProjectEmployees(response.data.filter(user => user.isArchived == false));
 
         //setSendingState(false);
         //setSendSucess(1);
