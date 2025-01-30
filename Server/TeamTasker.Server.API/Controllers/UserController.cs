@@ -296,6 +296,7 @@ namespace TeamTasker.Server.API.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Policy = AuthorizationPolicies.AdminUserPolicy)]
         [Route("DeleteEmployee", Name = "DeleteEmployee")]
         public IActionResult DeleteEmployee(int id)
         {
