@@ -24,7 +24,7 @@ namespace TeamTasker.Server.Domain.Entities
         [ForeignKey("Role")]
         public int RoleId { get; set; }
         public string Avatar { get; set; } = string.Empty;
-        public bool IsFinished { get; set; }
+        public bool IsArchived { get; set; }
         public virtual ICollection<Comment> Comments { get; set; } = default!;
         public virtual ICollection<UserNotification> UserNotifications { get; set; } = default!;
 

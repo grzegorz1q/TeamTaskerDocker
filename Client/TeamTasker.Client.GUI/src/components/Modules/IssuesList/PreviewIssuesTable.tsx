@@ -235,11 +235,14 @@ export default function PreviewIssuesTable({projectId, reloadCondition}: {projec
             <TableCell style={{ width: 160 }} align="right">
               <Box display={'flex'} flexDirection={'row'}>
                   <Avatar alt="?" src={projectEmployees.find(employee => employee.id == issue.employeeId)?.avatar} sx={{width: "2rem", height: "2rem"}}/> 
-                  <Typography sx={{alignSelf: "center", ml: "1rem"}}>
+                  <Typography sx={{alignSelf: "center", ml: "1rem", mr: '1rem'}}>
                       {
-                      projectEmployees.find(employee => employee.id == issue.employeeId)?.firstName
-                      + " " +
-                      projectEmployees.find(employee => employee.id == issue.employeeId)?.lastName
+                      projectEmployees.find(employee => employee.id == issue.employeeId)?.firstName == undefined ? "Removed " : projectEmployees.find(employee => employee.id == issue.employeeId)?.firstName
+                      + " "
+                      }
+                      {
+     
+                        projectEmployees.find(employee => employee.id == issue.employeeId)?.lastName == undefined ? "User" : projectEmployees.find(employee => employee.id == issue.employeeId)?.lastName
                       }
                   </Typography>
               </Box>

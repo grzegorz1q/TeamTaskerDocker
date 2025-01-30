@@ -19,7 +19,7 @@ namespace TeamTasker.Server.Application.Dtos.Users
         public string Position { get; set; } = string.Empty;
         public int RoleId { get; set; }
         public string Avatar { get; set; } = string.Empty;
-
+        public bool IsArchived { get; set; }
         //public ICollection<ReadCommentDto> Notifications { get; set; } = default!;
         //public ICollection<ReadIssueDto> AssignedIssues { get; set; } = default!;
         //public ICollection<ReadTeamDto> Teams { get; set; } = default!;

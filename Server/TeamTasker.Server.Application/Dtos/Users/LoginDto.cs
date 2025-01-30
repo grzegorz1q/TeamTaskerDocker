@@ -10,5 +10,6 @@ namespace TeamTasker.Server.Application.Dtos.Users
     {
         public string Email { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
+        public bool IsArchived { get; set; }
     }
 }

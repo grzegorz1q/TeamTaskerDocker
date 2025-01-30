@@ -11,7 +11,7 @@
         public string Position { get; set; } = string.Empty;
         public int RoleId { get; set; }
         public string Avatar { get; set; } = string.Empty;
-        public bool IsFinished { get; set; }
+        public bool IsArchived { get; set; }
         //public virtual ICollection<ReadCommentDto> Notifications { get; set; } = default!;
     }
 }
