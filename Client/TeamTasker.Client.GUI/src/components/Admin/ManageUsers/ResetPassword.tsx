@@ -69,8 +69,7 @@ export default function ResetPassword()
 {
     const [sendingState, setSendingState] = useState<boolean>(false);
     const [sendSucess, setSendSucess] = useState<number>(0);
-    setSendingState(false);
-    setSendSucess(0);
+
 
     return(
         <>
