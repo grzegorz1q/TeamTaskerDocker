@@ -6,6 +6,11 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
+RUN mkdir -p /app/data
+COPY "Server/TeamTasker.Server.API/data/TeamTasker.db" "/app/data/TeamTasker.db"
+
+COPY "TeamTasker.Server.API.pfx" "/app/TeamTasker.Server.API.pfx"
+
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
@@ -16,6 +21,7 @@ COPY ["Server/TeamTasker.Server.Infrastructure/TeamTasker.Server.Infrastructure.
 RUN dotnet restore "./Server/TeamTasker.Server.API/TeamTasker.Server.API.csproj"
 COPY . .
 WORKDIR "/src/Server/TeamTasker.Server.API"
+
 RUN dotnet build "./TeamTasker.Server.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish

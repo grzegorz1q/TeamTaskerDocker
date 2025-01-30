@@ -7,9 +7,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443
-    entrypoint: |
-      set -e
-      exec dotnet Team.Tasker.API.dll
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/app/TeamTasker.Server.API.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=YourNewPassword123
+    volumes:
+      - ./TeamTasker.Server.API.pfx:/app/TeamTasker.Server.API.pfx
+    entrypoint: ["dotnet", "TeamTasker.Server.API.dll"]
     build:
       context: .
       dockerfile: Server/TeamTasker.Server.API/Dockerfile
