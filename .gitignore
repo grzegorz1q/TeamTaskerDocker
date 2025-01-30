@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Server/TeamTasker.Server.API/data/TeamTasker.db-shm
+/Server/TeamTasker.Server.API/data/TeamTasker.db-wal
